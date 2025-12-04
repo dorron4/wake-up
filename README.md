@@ -9,10 +9,12 @@ Este proyecto integra un asistente virtual potenciado por **Gemini AI** de Googl
 ## ✨ Características
 
 - 💬 Chat interactivo con Gemini AI
-- 📱 Envío de respuestas por WhatsApp
+- 📱 Envío automático de respuestas por WhatsApp
+- 🤖 **Código autoejecutable** para integrar en tu asistente Gemini
 - 🎨 Interfaz moderna y responsiva
 - 🔒 Configuración segura de credenciales
 - ⚡ Servidor Express para manejo de API
+- 🔌 API REST para integración con cualquier sistema
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -21,6 +23,28 @@ Este proyecto integra un asistente virtual potenciado por **Gemini AI** de Googl
 - **IA**: Google Gemini API
 - **WhatsApp**: Twilio API
 - **Gestión de variables**: dotenv
+
+## 🎯 Modos de Uso
+
+Este proyecto ofrece **3 formas de integración**:
+
+### 1️⃣ **Integración Directa en Asistente Gemini** (Recomendado)
+Si ya tienes un asistente Gemini con capacidad de ejecutar código:
+- Usa el archivo [enviar-whatsapp.js](enviar-whatsapp.js)
+- Lee la guía completa: [INTEGRACION-GEMINI.md](INTEGRACION-GEMINI.md)
+- Los usuarios solo dirán: "Envíame esto por WhatsApp al +34612345678"
+
+### 2️⃣ **Interfaz Web Completa**
+Aplicación web lista para usar con chat de Gemini:
+- Sigue las instrucciones de instalación abajo
+- Abre `http://localhost:3000`
+
+### 3️⃣ **API REST**
+Usa solo el backend para integrar con tu sistema:
+- Endpoint: `POST /api/send-whatsapp`
+- Ver ejemplos en [GUIA-INTEGRACION.md](GUIA-INTEGRACION.md)
+
+---
 
 ## 📦 Instalación
 
@@ -113,13 +137,26 @@ El servidor se ejecutará en `http://localhost:3000`
 ```
 wake-up/
 ├── public/
-│   └── index.html          # Interfaz del usuario
-├── server.js               # Servidor Express con API
-├── package.json            # Dependencias del proyecto
-├── .env.example           # Ejemplo de variables de entorno
-├── .gitignore             # Archivos ignorados por Git
-└── README.md              # Documentación
+│   └── index.html                  # Interfaz web completa
+├── server.js                       # Servidor Express con API
+├── enviar-whatsapp.js             # 🤖 Código autoejecutable para Gemini
+├── test-enviar-whatsapp.js        # Script de pruebas
+├── codigo-para-gemini-agent.js    # Ejemplos de integración
+├── ejemplo-integracion.html       # Ejemplo de uso en web
+├── package.json                    # Dependencias del proyecto
+├── .env.example                    # Ejemplo de variables de entorno
+├── .gitignore                      # Archivos ignorados por Git
+├── README.md                       # Documentación principal
+├── INTEGRACION-GEMINI.md          # 📘 Guía para integrar en Gemini
+└── GUIA-INTEGRACION.md            # 📗 Guía completa de integración
 ```
+
+### Archivos Clave
+
+- **[enviar-whatsapp.js](enviar-whatsapp.js)**: Código principal para integrar en tu asistente Gemini
+- **[INTEGRACION-GEMINI.md](INTEGRACION-GEMINI.md)**: Guía paso a paso para integración con Gemini
+- **[test-enviar-whatsapp.js](test-enviar-whatsapp.js)**: Script para probar la funcionalidad
+- **[server.js](server.js)**: Servidor backend opcional
 
 ## 🔧 API Endpoints
 
