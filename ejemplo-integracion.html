@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Integración - WhatsApp</title>
+</head>
+<body>
+    <h1>Ejemplo: Integrar WhatsApp en tu página existente</h1>
+
+    <!-- Tu contenido existente aquí -->
+    <div id="respuesta-gemini">
+        <!-- Aquí se muestra la respuesta de tu asistente Gemini -->
+        <p>Respuesta del asistente: Lorem ipsum dolor sit amet...</p>
+    </div>
+
+    <!-- Botón para compartir por WhatsApp -->
+    <button onclick="mostrarFormularioWhatsApp()">
+        📱 Enviar respuesta a WhatsApp
+    </button>
+
+    <!-- Formulario de WhatsApp (oculto inicialmente) -->
+    <div id="whatsapp-form" style="display: none;">
+        <input type="tel" id="telefono" placeholder="+34612345678">
+        <button onclick="enviarPorWhatsApp()">Enviar</button>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN: URL de tu servidor backend
+        const BACKEND_URL = 'http://localhost:3000';
+
+        function mostrarFormularioWhatsApp() {
+            document.getElementById('whatsapp-form').style.display = 'block';
+        }
+
+        async function enviarPorWhatsApp() {
+            const telefono = document.getElementById('telefono').value;
+
+            // Obtén la respuesta de tu asistente Gemini
+            // (esto depende de cómo tengas implementado tu asistente)
+            const respuestaGemini = document.getElementById('respuesta-gemini').textContent;
+
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/send-whatsapp`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        phoneNumber: telefono,
+                        message: `🚀 Wake Up Servicios:\n\n${respuestaGemini}`
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('✅ Mensaje enviado a WhatsApp!');
+                } else {
+                    alert('❌ Error: ' + data.error);
+                }
+            } catch (error) {
+                alert('❌ Error al enviar: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
